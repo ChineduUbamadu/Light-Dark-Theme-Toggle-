@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chinedu Joseph Ubamadu - Light/Dark Theme Toggle</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      transition: background-color 0.5s, color 0.5s;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .light-theme {
+      background-color: #f0f0f0;
+      color: #333;
+    }
+    .dark-theme {
+      background-color: #1c1c1c;
+      color: #f0f0f0;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 20px 0;
+      cursor: pointer;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #4CAF50;
+      color: white;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .container {
+      width: 90%;
+      max-width: 800px;
+    }
+    .card {
+      background-color: inherit;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.5s, border-color 0.5s;
+    }
+    .dark-theme .card {
+      border-color: #555;
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+    }
+    h1, h2 {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <button id="theme-toggle" onclick="toggleTheme()">Switch Theme</button>
+
+  <div class="container">
+    <h1>Welcome to My Profile Page</h1>
+
+    <div class="card">
+      <h2>About Me</h2>
+      <p>My name is <strong>Chinedu Ubamadu</strong>. I am from Nigeria. I am passionate about education, technology, and creativity.</p>
+    </div>
+
+    <div class="card">
+      <h2>Education</h2>
+      <ul>
+        <li>Diploma in Data Processing</li>
+        <li>B.Sc.Ed. in Economics</li>
+        <li>Master's Degree in Educational Administration and Planning</li>
+        <li>Master's Degree in Educational Measurement and Evaluation</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Work Experience</h2>
+      <ul>
+        <li>Public servant in the Anambra State government</li>
+        <li>Tutorial staff at the PPSSC</li>
+        <li>Former staff at the Awka Millennium City (AMC)</li>
+        <li>Supervisor at the Government's Media Department</li>
+        <li>Lecturer at NOCEN PTP NCE Programme</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Skills and Interests</h2>
+      <ul>
+        <li>Front-end development (currently learnig with CareerEx)</li>
+        <li>Animation and Post-production (trained with YAPPI)</li>
+        <li>UI/UX Design (trained with 3MTT and Code Anambra)</li>
+        <li>Certified in Digital Literacy, Productivity Tools, and AI Career Essentials</li>
+        <li>Founder of DujoTech (academic research, data analysis, and virtual assistance services)</li>
+        <li>Contributor to EduJoeblog (education-related content)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Future Goals</h2>
+      <p>I am aiming to build a career in front-end development, animation and post-production, and virtual assistance.</p>
+    </div>
+  </div>
+
+  <script>
+    // Function to toggle the theme
+    function toggleTheme() {
+      const body = document.body;
+      const button = document.getElementById('theme-toggle');
+
+      body.classList.toggle('dark-theme');
+      body.classList.toggle('light-theme');
+
+      // Save the current theme to localStorage
+      if (body.classList.contains('dark-theme')) {
+        localStorage.setItem('theme', 'dark');
+        button.textContent = 'Switch to Light Mode';
+      } else {
+        localStorage.setItem('theme', 'light');
+        button.textContent = 'Switch to Dark Mode';
+      }
+    }
+
+    // Check saved theme on page load
+    window.onload = function() {
+      const savedTheme = localStorage.getItem('theme');
+      const body = document.body;
+      const button = document.getElementById('theme-toggle');
+
+      if (savedTheme === 'dark') {
+        body.classList.add('dark-theme');
+        body.classList.remove('light-theme');
+        button.textContent = 'Switch to Light Mode';
+      } else {
+        body.classList.add('light-theme');
+        body.classList.remove('dark-theme');
+        button.textContent = 'Switch to Dark Mode';
+      }
+    }
+  </script>
+
+</body>
+</html>
